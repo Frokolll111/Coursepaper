@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service;
 import pro.sky.Coursepaper5.model.Employee;
 
 import java.util.*;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.groupingBy;
@@ -40,16 +39,6 @@ public class DepartmentService {
     }
 
     public Map<Integer, List<Employee>> all() {
-        Map<Integer, Employee> map = employeeService.findAll()
-                .stream()
-                .collect(Collectors.toMap(Employee::getDepartment, Function.identity(),(employee, employee2) -> {
-                    if (employee.getSalary() > employee2.getSalary()) {
-                        return employee;
-                    }
-                    return employee2;
-                },
-                        HashMap::new
-                ));
         return employeeService.findAll()
                 .stream()
                 .collect(groupingBy(Employee::getDepartment));
