@@ -9,6 +9,8 @@ import pro.sky.Coursepaper5.model.Employee;
 import pro.sky.Coursepaper5.service.EmployeeServiceImpl;
 import java.util.Arrays;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class EmployeeServiceTest2 {
@@ -43,6 +45,6 @@ public class EmployeeServiceTest2 {
         List<Employee> expected = Arrays.asList(
                 new Employee("Максим", "Скрипников", 1000, 1),
                 new Employee("Наташа", "Макарова", 2000, 3));
-        Assertions.assertEquals(expected,employeeService.findAll());
+        assertIterableEquals(expected,employeeService.findAll());
     }
 }
